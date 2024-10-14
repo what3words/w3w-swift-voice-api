@@ -11,11 +11,15 @@ To use this library you’ll need a what3words API key, which can be signed up f
 
 # Example
 
-An iOS UIKit example using the VoiceAPI is provided in this package: [./Examples/VoiceAPI/VoiceAPI.xcodeproj](./Examples/VoiceAPI/VoiceAPI.xcodeproj)
+An iOS UIKit example using the VoiceAPI is provided in this package: [https://github.com/what3words/w3w-swift-samples/tree/main/VoiceAPI](https://github.com/what3words/w3w-swift-samples/tree/main/VoiceAPI)
 
 # Installation
 
-The Voice API wrapper is included in what3words' [Swift API Wrapper](https://github.com/what3words/w3w-swift-wrapper) code.  Installation instructions can be found in it's [README](README.md).
+You can install this with [Swift Package Manager](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) by adding the URL below to Swift Packages under your project settings:
+
+```
+https://github.com/what3words/w3w-swift-voice-api.git
+```
 
 ## Usage
 
@@ -24,7 +28,7 @@ The Voice API wrapper is included in what3words' [Swift API Wrapper](https://git
 In any swift file you use the what3words API, use the following :
 
 ```swift
-import W3WSwiftApi
+import W3WSwiftVoiceApi
 ```
 
 ### Initialise
@@ -32,7 +36,7 @@ import W3WSwiftApi
 Initialize the W3W API class:
 
 ```swift
-let api = What3WordsV3(apiKey: "YourApiKey")
+var api = W3WVoiceApi(apiKey: "YourApiKey")
 ```
 
 ##### Example
@@ -137,19 +141,3 @@ while (yourSoundObject.isProducingAudio() {
 audio.endSamples()
 
 ```
-
-### Alternatively...
-
-The Voice API is implemented as an `extension` to the `What3WordsV3` class containing an additional `autosuggest(audio:)` function. This `autosuggest(audio:)` function calls the same function in the `W3WVoiceApi` class
-
-This is done to allow the easy separation of the Voice API code from the main API functions, if for some reason that is wanted.
-
-In the unlikely case you specifically want the voiceAPI without the main API functions as well, you can instantiate the `W3WVoiceApi` object separately:
-
-```swift
-let voiceApi = W3WVoiceApi(apiKey: "YourApiKey")
-```
-
-The two functions are the same: `autosuggest(audio:completion:)` and `availableVoiceLanguages(completion:)`.
-
-
