@@ -8,7 +8,7 @@ import XCTest
 final class w3w_swift_wrapperTests: XCTestCase {
   
   
-  var api:W3WVoiceApi!
+  var api: W3WVoiceApi!
   
   
   override func setUp() {
@@ -84,6 +84,8 @@ final class w3w_swift_wrapperTests: XCTestCase {
 //    
 //    let somewhereInLondon = CLLocationCoordinate2D(latitude: 51.520847,longitude: -0.195521)
 //    
+//     
+//      
 //    if let resource = try? Resource(name: "test", type: "dat") {
 //      
 //      // load a file of raw audio data containing a mono stream of 32 bit float data samples
@@ -93,7 +95,7 @@ final class w3w_swift_wrapperTests: XCTestCase {
 //        let audio = W3WAudioStream(sampleRate: 44100, encoding: .pcm_f32le)
 //        
 //        // assign the audio stream to an autosuggest call
-//        api.autosuggest(audio: audio, language: "en", options: W3WOption.focus(somewhereInLondon)) { suggestions, error in
+//          api.autosuggest(audio: audio, language: W3WBaseLanguage(locale: "en"), options: W3WOption.focus(somewhereInLondon)) { suggestions, error in
 //          
 //          XCTAssertNil(error)
 //          
@@ -101,9 +103,19 @@ final class w3w_swift_wrapperTests: XCTestCase {
 //            expectation.fulfill()
 //          }
 //        }
+//          
+//          let floatArray = data.withUnsafeBytes { bytes -> [Float] in
+//              let floatBuffer = bytes.bindMemory(to: Float.self)
+//              return Array(floatBuffer)
+//          }
+//          
+//          // Pass the float array to UnsafeBufferPointer
+//          floatArray.withUnsafeBufferPointer { buffer in
+//              add(samples: buffer)
+//          }
 //        
 //        // finally, send the audio data.  This can be called repeatedly as new data become available if you want to live stream
-//        audio.add(samples: data)
+//        //  audio.add(samples: data)
 //        
 //        // tell the server no more data will come
 //        audio.endSamples()
@@ -111,7 +123,7 @@ final class w3w_swift_wrapperTests: XCTestCase {
 //        waitForExpectations(timeout: 60.0, handler: nil)
 //      }
 //    }
-    
+//    
 //  }
 #endif
   
